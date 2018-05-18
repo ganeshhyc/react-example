@@ -44,6 +44,9 @@ export default class BodyContent extends Component{
   render(){
     return(
       <div>
+      <div className="ArtistsName">
+        {this.state.artist1?this.state.artist1[0] !== undefined ? this.state.artist1[0].strArtist:"":""}
+      </div>
         <div className="vScroll">
         <table border="0" cellSpacing="15"><tbody><tr>
         {this.state.artist1.map(data=>
@@ -59,6 +62,9 @@ export default class BodyContent extends Component{
         </tr>
         </tbody></table>
         </div>
+        <div className="ArtistsName">
+          {this.state.artist2?this.state.artist2[0] !== undefined ? this.state.artist2[0].strArtist:"":""}
+        </div>
         <div className="vScroll">
         <table border="0" cellSpacing="15"><tbody><tr>
         {this.state.artist2.map(data=>
@@ -73,6 +79,8 @@ export default class BodyContent extends Component{
         )}
         </tr>
         </tbody></table>
+        </div><div className="ArtistsName">
+          {this.state.artist3?this.state.artist3[0] !== undefined ? this.state.artist3[0].strArtist:"":""}
         </div>
         <div className="vScroll">
         <table border="0" cellSpacing="15"><tbody><tr>

@@ -117,3 +117,10 @@
   overflow:hidden;
   overflow-x: scroll;
 }
+.ArtistsName{
+  margin-left: 25px;
+  margin-top: 25px;
+  font-size:25px;
+
+  color: #3f3f3f;
+}

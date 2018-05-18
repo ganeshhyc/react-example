@@ -8,7 +8,6 @@ export default class Search extends Component {
             txt:'',
             artist:[]
         }
-        this.txtF = this.txtF.bind(this)
     }
     componentDidMount(){
 
@@ -21,9 +20,9 @@ export default class Search extends Component {
             txt : event.target.value
         })
         axios.get("http://www.theaudiodb.com/api/v1/json/1/search.php?s="+event.target.value)
-        .then(resp=>{
+        .then((resp,req)=>{
             this.setState({
-            artist:resp.data.artists
+            artist: resp.data.artists
             })
             console.log(this.state.artist)
         })
@@ -33,7 +32,7 @@ export default class Search extends Component {
     render() {
         return (
         <div id="search">
-            <input placeholder="Search" className = 'searchField' type="text" value={this.state.txt} onChange={this.txtF} />
+            <input placeholder="Search" className = 'searchField' type="text" value={this.state.txt} onChange={(e) => this.txtF(e)} />
             {this.state.txt}
 
         </div>

@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import '../Resources/style.css';
 
 export default class Header extends Component {
     constructor(props) {

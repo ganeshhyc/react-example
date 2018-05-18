@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import axios from 'axios';
+import '../Resources/style.css';
 
 export default class Search extends Component {
     constructor(props){
@@ -30,10 +32,12 @@ export default class Search extends Component {
     }
 
     render() {
-        return (    
+        return (
         <div id="search">
+            <div id="demo">      
             <input placeholder="Search" className = 'searchField' type="text" value={this.state.txt} onChange={this.txtF} />
             {this.state.txt}
+        </div>
         </div>
         );
     }

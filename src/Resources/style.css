@@ -81,3 +81,39 @@
   border-radius: 50%;
   margin-left:50px;
 }
+.btn {
+    position: absolute;
+    background-color: #555;
+    margin-top: 25px;
+    margin-left: 10px;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+.btn:hover {
+    background-color: black;
+}
+
+.popup {
+	zoom:1.0;
+	position:relative;
+	text-decoration:none;
+}
+.popup span {
+	position:fixed;
+	left:-999em;
+	z-index:990;
+
+}
+.popup:hover {visibility:visible;}
+.popup:hover span {left:auto;padding-top:75px;padding-left:50px;}
+* html .popup span {position:absolute;}
+.vScroll{
+  width:98%;
+  overflow:hidden;
+  overflow-x: scroll;
+}

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import '../Resources/style.css';
 
 export default class Search extends Component {
     constructor(props){
@@ -21,7 +20,7 @@ export default class Search extends Component {
         this.setState({
             txt : event.target.value
         })
-        axios.get("http://www.theaudiodb.com/api/v1/json/1/search.php?s="+this.state.txt)
+        axios.get("http://www.theaudiodb.com/api/v1/json/1/search.php?s="+event.target.value)
         .then(resp=>{
             this.setState({
             artist:resp.data.artists
@@ -36,7 +35,7 @@ export default class Search extends Component {
         <div id="search">
             <input placeholder="Search" className = 'searchField' type="text" value={this.state.txt} onChange={this.txtF} />
             {this.state.txt}
-          
+
         </div>
         );
     }

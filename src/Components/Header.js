@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import '../Resources/style.css';
 import icon from '../Resources/images/icon.png';
 
 export default class Header extends Component {

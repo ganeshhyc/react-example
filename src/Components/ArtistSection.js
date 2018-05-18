@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Artist from './Artist';
-import styles from '../Resources/style.css';
 import music from '../Resources/images/music.png'
 
 export default class ArtistSection extends Component {
@@ -15,7 +14,7 @@ export default class ArtistSection extends Component {
             <div className="padPicker"><br/></div>
             <div className="picker">
                 <img className="icon" src={music} height="100px" align="middle"/>
-                <table border="0" align="right" cellpadding="60">
+                <table border="0" align="right" cellPadding="60"><tbody>
                 <tr>
                 <td>
                     <Artist imageUrl="http://images6.fanpop.com/image/photos/37000000/JT-is-20-20-justin-timberlake-37001462-475-475.jpg"/>
@@ -32,7 +31,7 @@ export default class ArtistSection extends Component {
                 <td>
                     <Artist imageUrl="http://wilesmag.com/wp-content/uploads/2014/07/Ariana-Grande.jpg"/>
                 </td>
-                </tr>
+                </tr></tbody>
             </table>
             </div>
         </div>

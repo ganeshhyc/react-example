@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../Components/Header';
 import Search from '../Components/Search';
+import ArtistSection from '../Components/ArtistSection'
 import '../Resources/style.css';
 
 export default class Home extends Component {
@@ -13,6 +14,7 @@ export default class Home extends Component {
             <div>
             <Header/>
             <Search/>
+            <ArtistSection/>
             </div>
         );
     }

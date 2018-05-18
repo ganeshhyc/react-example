@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import '../Resources/style.css';
+import icon from '../Resources/images/icon.png';
 
 export default class Header extends Component {
     constructor(props) {
@@ -9,7 +10,7 @@ export default class Header extends Component {
     render() {
         return (
             <div id="header">
-                <span className="icon"><img src="images/icon.png" height="70px" align="middle"/></span>
+                <span className="icon"><img src={icon} height="100px" align="middle"/></span>
                 <span className="songMap">Song Map</span>
                 <span className="myMusic">My Music</span>
                 <span className="more">More</span>

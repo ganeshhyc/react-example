@@ -40,23 +40,19 @@
 #search{
   background-color: #f7f7f7;
   width:100%;
-  height:15%;
+  height:100px;
   border-bottom: 1px solid #e0dddd;
 }
-#demo{
-  width:80%;
-  height:40%;
-  padding-top: 30px;
-  padding-left: 70px;
-
-}
 .searchField{
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
   border-radius: 25px;
   font-size: 20px;
   color: #3f3f3f;
-  padding: 20px;
-  width: 80%;
-  height: 50px;
+  margin-top: 20px;
+  margin-left:30px;
+  width: 60%;
+  height: 10px;
   border: 2px solid #e0dddd;
 
 }
@@ -78,4 +74,6 @@
 }
 .round{
   border-radius: 50%;
+  display: inline-block;
+  margin-top:-70px;
 }

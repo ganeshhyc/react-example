@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Artist from './Artist';
 import styles from '../Resources/style.css';
+import music from '../Resources/images/music.png'
 
 export default class ArtistSection extends Component {
     constructor(props) {
@@ -10,9 +11,11 @@ export default class ArtistSection extends Component {
     render() {
         return (
         <div id="bodyContent">
+
+            <div className="padPicker"><br/></div>
             <div className="picker">
-                <span className="icon"><img src="images/music.png" height="100px" align="middle"/></span>
-                <table border="0" align="right" cellpadding="20">
+                <img className="icon" src={music} height="100px" align="middle"/>
+                <table border="0" align="right" cellpadding="60">
                 <tr>
                 <td>
                     <Artist imageUrl="http://images6.fanpop.com/image/photos/37000000/JT-is-20-20-justin-timberlake-37001462-475-475.jpg"/>

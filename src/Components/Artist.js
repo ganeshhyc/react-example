@@ -7,9 +7,7 @@ export default class Artist extends Component {
 
     render() {
         return (
-            <span claasNmae="round"> 
-                <img height="100" src={this.props.imageUrl} align="middle"/>
-            </span>
+              <img className="round" height="100" src={this.props.imageUrl} />
         );
     }
 }

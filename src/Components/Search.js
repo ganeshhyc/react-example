@@ -12,10 +12,10 @@ export default class Search extends Component {
         this.txtF = this.txtF.bind(this)
     }
     componentDidMount(){
-    
+
     }
     componentWillUnmount(){
-    
+
     }
     txtF(event) {
         this.setState({
@@ -34,10 +34,9 @@ export default class Search extends Component {
     render() {
         return (
         <div id="search">
-            <div id="demo">      
             <input placeholder="Search" className = 'searchField' type="text" value={this.state.txt} onChange={this.txtF} />
             {this.state.txt}
-        </div>
+          
         </div>
         );
     }

@@ -188,18 +188,40 @@ export default class Search extends Component {
             <a href="javascript:void(0)" className="closebtn" onClick={this.closeNav}>&times;</a>
             <div className="overlay-content">
               <span className = 'dtable'>
+              {this.state.artist?this.state.artist[0] !== undefined ? this.state.artist.map((ArtistData)=><span>
+                  <img src={ArtistData.strArtistThumb} height='100px' align="center" /> <h2><font color="white">{ArtistData.strArtist}</font></h2></span> ): "" : "" }
                   <table className='innerTable'>
+                  <tr>
+                    <th>&nbsp;&nbsp;</th>
+                    <th>&nbsp;&nbsp;</th>
+                    <th>&nbsp;&nbsp;</th>
+                    <th>&nbsp;&nbsp;</th>
+                    <th>&nbsp;&nbsp;</th>
+                    <th>&nbsp;&nbsp;</th>
+                    <th>&nbsp;&nbsp;</th></tr>
                 { this.state.track.track!== undefined ? this.state.track.track.map((dv)=>
 
                   <tr>
+                    <th>&nbsp;&nbsp;</th>
                     <th>{dv.intTrackNumber}</th>
-                    <td>{dv.strTrack}</td>
+                    <th>&nbsp;&nbsp;</th>
+                    <td className="tdContent">&nbsp;&nbsp;{dv.strTrack}&nbsp;&nbsp;</td>
+                    <th>&nbsp;&nbsp;</th>
                     <td>{parseInt(+(dv.intDuration)/60000)}:{(dv.intDuration)%60}</td>
+                    <th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
                   </tr>
 
 
 
                 ):""}
+            <tr>
+              <th>&nbsp;&nbsp;</th>
+              <th>&nbsp;&nbsp;</th>
+              <th>&nbsp;&nbsp;</th>
+              <th>&nbsp;&nbsp;</th>
+              <th>&nbsp;&nbsp;</th>
+              <th>&nbsp;&nbsp;</th>
+              <th>&nbsp;&nbsp;</th></tr>
 
           </table>
         </span>

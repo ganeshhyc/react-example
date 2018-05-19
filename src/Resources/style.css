@@ -77,6 +77,10 @@
   display: inline-block;
   margin-top:-70px;
 }
+.roundT{
+  border-radius: 50%;
+  display: inline-block;
+}
 .searchImg{
   border-radius: 50%;
   margin-right:100px;
@@ -205,6 +209,53 @@ html {
 .dtable tr:nth-child(odd) td { background: #F1F1F1; }
 
 .dtable tr td:hover { background: #666; color: #FFF; }
+
+
+
+.stable table {
+    color: #333;
+    font-family: Helvetica, Arial, sans-serif;
+    width: 20%;
+    margin: auto;
+
+    border-collapse:
+    collapse; border-spacing: 0;
+}
+.stable .innerTable {
+    color: #333;
+    font-family: Helvetica, Arial, sans-serif;
+    width: 350px;
+    margin: auto;
+
+    border-collapse:
+    collapse; border-spacing: 0;
+}
+.stable td, th {
+    border: 1px solid transparent;
+    height: 15px;
+    transition: all 0.3s;
+}
+
+.stable th {
+    background: #F1F1F1;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.stable td {
+    background: #F1F1F1;
+    text-align: center;
+
+    font-size: 15px;
+}
+
+/* Cells in even rows (2,4,6...) are one color */
+.dtable tr:nth-child(even) td { background: #F1F1F1; }
+
+/* Cells in odd rows (1,3,5...) are another (excludes header cells)  */
+.dtable tr:nth-child(odd) td { background: #F1F1F1; }
+
+.dtable tr td:hover { background: #666; color: #FFF; }
 /* Hover cell effect! */
 .link
   {
@@ -218,5 +269,8 @@ html {
      cursor: pointer;
 }
 #searched{
+  display: none;
+}
+#upperBody{
   display: none;
 }

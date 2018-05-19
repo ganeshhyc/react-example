@@ -37,16 +37,6 @@ export default class Search extends Component {
         .catch(console.error)
         console.log(this.state.artist);
     }
-    clicked(){
-        document.getElementById("searched").innerHTML =
-                                                      this.state.artist.map((ArtistData)=>
-                                                        {return (
-                                                                  "<span class = 'dtable'><table><tr><th><img src='"+ArtistData.strArtistThumb+
-                                                                  "' height='100px'/></th><th><table class='innerTable'><tr><th>"+ArtistData.strArtist+
-                                                                  "</th</tr><tr><td><a href='#'>View Album</a></td></tr></table></th></tr></table></span>"
-                                                                )
-                                                        })
-    }
     clear(){
       this.setState({
           txt : '',
@@ -55,6 +45,10 @@ export default class Search extends Component {
 
       document.getElementById("searched").innerHTML = ''
     }
+    clicked(){
+        document.getElementById("searched").style.display="inline"
+    }
+
 
     render() {
         return (
@@ -76,7 +70,30 @@ export default class Search extends Component {
                 </tr></tbody></table>
             </div>
 
-            <div id="searched"></div>
+            <div id="searched">
+            { this.state.artist?this.state.artist[0] !== undefined ? this.state.artist.map((ArtistData)=>
+                <span class = 'dtable'>
+                  <table>
+                    <tr>
+                      <th>
+                        <img src={ArtistData.strArtistThumb} height='100px'/>
+                      </th>
+                      <th>
+                        <table class='innerTable'>
+                          <tr>
+                            <th>{ArtistData.strArtist}</th>
+                          </tr>
+                          <tr>
+                            <td>
+                              <button className="link" onClick={this.clear}>View Album</button>
+                            </td>
+                          </tr>
+                        </table>
+                      </th>
+                    </tr>
+                  </table>
+                </span>) : "":"" }
+            </div>
           </div>
         );
     }

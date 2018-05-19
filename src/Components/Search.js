@@ -16,6 +16,8 @@ export default class Search extends Component {
           this.clicked=this.clicked.bind(this);
           this.clear=this.clear.bind(this);
           this.upperBody=this.upperBody.bind(this);
+          this.openNav=this.openNav.bind(this);
+          this.closeNav=this.closeNav.bind(this);
     }
     componentDidMount(){
 
@@ -70,7 +72,12 @@ export default class Search extends Component {
       document.getElementById("upperBody").style.display="inline"
 
     }
-
+    openNav() {
+    document.getElementById("myNav").style.display = "block";
+    }
+    closeNav() {
+    document.getElementById("myNav").style.display = "none";
+    }
 
     render() {
         return (
@@ -127,7 +134,7 @@ export default class Search extends Component {
                       </tr>
                       <tr>
                         <td>
-                          Details
+                          <button value={album.idAlbum} className="link" onClick={this.openNav}>View Playlist</button>
                         </td>
                       </tr>
                     </table>
@@ -152,7 +159,7 @@ export default class Search extends Component {
                           </tr>
                           <tr>
                             <td>
-                              <button value={ArtistData.idArtist} className="link" onClick={(e)=>this.upperBody(e)}>View Track</button>
+                              <button value={ArtistData.idArtist} className="link" onClick={(e)=>this.upperBody(e)}>View Album</button>
                             </td>
                           </tr>
                         </table>
@@ -161,6 +168,16 @@ export default class Search extends Component {
                   </table>
                 </span>) : "":"" }
             </div>
+            <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onClick={this.closeNav}>&times;</a>
+            <div class="overlay-content">
+              <a href="#">A</a>
+              <a href="#">B</a>
+              <a href="#">C</a>
+              <a href="#">D</a>
+            </div>
+</div>
+
           </div>
         );
     }

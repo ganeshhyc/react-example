@@ -43,7 +43,7 @@ export default class Search extends Component {
           artist : []
       })
 
-      document.getElementById("searched").innerHTML = ''
+      document.getElementById("searched").style.display="none"
     }
     clicked(){
         document.getElementById("searched").style.display="inline"

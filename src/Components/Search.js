@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BodyContent from './BodyContent';
+import SearchResultHead from './SearchResultHead';
 import axios from 'axios';
 
 var id='';var albumId=''
@@ -95,25 +96,9 @@ export default class Search extends Component {
     document.getElementById("myNav").style.display = "none";
     }
 
-    render() {
-        return (
-          <div>
-            <div id="search">
-                <input placeholder="Search" className = 'searchField' type="text" value={this.state.txt} onChange={(e) => this.txtF(e)} align="middle"/>
-                <button className="btn" onClick={this.clicked}>Search</button>
-                <button className="btn1" onClick={this.clear}>Clear</button>
-                <table border="0" align="right"><tbody><tr>
-                    <td>
-                      <a  href="#">
-                        <img className="searchImg" height="75" src={this.state.artist?this.state.artist[0] !== undefined ? this.state.artist[0].strArtistThumb:"":""} align="middle"/></a></td>
-                    <td>
-                      <a  href="#">
-                        <img className="searchImg" height="75" src={this.state.artist?this.state.artist[1] !== undefined ? this.state.artist[1].strArtistThumb:"":""} align="middle"/></a></td>
-                    </tr></tbody></table>
-            </div>
-            <div id="upperBody">
-              { this.state.artist?this.state.artist[0] !== undefined ? this.state.artist.map((album)=>
-                <span className="dtable">
+    generateAlbun = (album) => {
+      return (
+        <span className="dtable">
                 <table>
                   <tr>
                     <th>
@@ -135,7 +120,22 @@ export default class Search extends Component {
                 </table>
 
                 </span>
-              ) : "" : "" }
+      );
+    }
+
+    render() {
+        return (
+          <div>
+            <div id="search">
+            <input placeholder="Search" className = 'searchField' type="text" value={this.state.txt} onChange={(e) => this.txtF(e)} align="middle"/>
+            <button className="btn" onClick={this.clicked}>Search</button>
+            <button className="btn1" onClick={this.clear}>Clear</button>
+            <SearchResultHead imageUrl={[this.state.artist?this.state.artist[0] !== undefined ? this.state.artist[0].strArtistThumb:"":""
+            ,this.state.artist?this.state.artist[1] !== undefined ? this.state.artist[1].strArtistThumb:"":""
+            ]}/>
+            </div>
+            <div id="upperBody">
+              { this.state.artist?this.state.artist[0] !== undefined ? this.state.artist.map((album)=>this.generateAlbun(album)) : "" : "" }
             {this.state.album.album != undefined ? this.state.album.album.map((album)=>
               <span className="stable">
               <table>
@@ -158,7 +158,7 @@ export default class Search extends Component {
                 </tr>
               </table></span>
             )
-               : "" }
+              : "" }
             </div>
             <div id="searched">
             { this.state.artist?this.state.artist[0] !== undefined ? this.state.artist.map((ArtistData)=>

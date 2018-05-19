@@ -187,10 +187,23 @@ export default class Search extends Component {
             <div id="myNav" className="overlay">
             <a href="javascript:void(0)" className="closebtn" onClick={this.closeNav}>&times;</a>
             <div className="overlay-content">
-              <a href="#">A</a>
-              <a href="#">B</a>
-              <a href="#">C</a>
-              <a href="#">D</a>
+              <span className = 'dtable'>
+                  <table className='innerTable'>
+                { this.state.track.track!== undefined ? this.state.track.track.map((dv)=>
+
+                  <tr>
+                    <th>{dv.intTrackNumber}</th>
+                    <td>{dv.strTrack}</td>
+                    <td>{parseInt(+(dv.intDuration)/60000)}:{(dv.intDuration)%60}</td>
+                  </tr>
+
+
+
+                ):""}
+
+          </table>
+        </span>
+
             </div>
 </div>
 

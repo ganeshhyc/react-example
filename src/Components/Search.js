@@ -97,30 +97,10 @@ export default class Search extends Component {
     document.getElementById("myNav").style.display = "none";
     }
 
-    generateAlbun = (album) => {
+    generateArtistHead = (album,isDetail=true) => {
       return (
-        <span className="dtable">
-                <table>
-                  <tr>
-                    <th>
-                      <img src={album.strArtistThumb} height='100px'/>
-                    </th>
-                    <th>
-                      <table className='innerTable'>
-                        <tr>
-                          <th>{album.strArtist}</th>
-                        </tr>
-                        <tr>
-                          <td>
-                            Details
-                          </td>
-                        </tr>
-                      </table>
-                    </th>
-                  </tr>
-                </table>
-
-                </span>
+        
+        <ArtistdDetailHead artistThumb={album.strArtistThumb} idArtist={isDetail?"":album.idArtist} artist={album.strArtist} onClick={isDetail?()=>{}:(e)=>this.upperBody(e)} text={isDetail?"Detail":"View Album"}/>
       );
     }
 
@@ -136,7 +116,7 @@ export default class Search extends Component {
             ]}/>
             </div>
             <div id="upperBody">
-              { this.state.artist?this.state.artist[0] !== undefined ? this.state.artist.map((album)=>this.generateAlbun(album)) : "" : "" }
+              { this.state.artist?this.state.artist[0] !== undefined ? this.state.artist.map((album)=>this.generateArtistHead(album)) : "" : "" }
             {this.state.album.album != undefined ? this.state.album.album.map((album)=>
               <span className="stable">
               <table>
@@ -162,9 +142,7 @@ export default class Search extends Component {
               : "" }
             </div>
             <div id="searched">
-            { this.state.artist?this.state.artist[0] !== undefined ? this.state.artist.map((ArtistData)=>
-                <ArtistdDetailHead artistThumb={ArtistData.strArtistThumb} onClick={(e)=>this.upperBody(e)} artist={ArtistData.strArtist} idArtist={ArtistData.idArtist} />
-                ) : "":"" }
+            { this.state.artist?this.state.artist[0] !== undefined ? this.state.artist.map((ArtistData)=>this.generateArtistHead(ArtistData,false)) : "":"" }
             </div>
             <div id="myNav" className="overlay">
             <a href="javascript:void(0)" className="closebtn" onClick={this.closeNav}>&times;</a>

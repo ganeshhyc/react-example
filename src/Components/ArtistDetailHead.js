@@ -20,7 +20,7 @@ export default class ArtistDetailHead extends Component {
                     </tr>
                     <tr>
                     <td>
-                        <button value={this.props.idArtist} className="link" onClick={this.props.onClick}>View Album</button>
+                        <button value={this.props.idArtist} className="link" onClick={this.props.onClick}>{this.props.text}</button>
                     </td>
                     </tr>
                 </table>

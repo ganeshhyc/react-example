@@ -3,6 +3,7 @@ import BodyContent from './BodyContent';
 import SearchResultHead from './SearchResultHead';
 import ArtistdDetailHead from './ArtistDetailHead';
 import ArtistAlbumBody from './ArtistAlbumBody';
+import SongList from './SongList';
 import axios from 'axios';
 
 var id='';var albumId=''
@@ -30,7 +31,6 @@ export default class Search extends Component {
 
     }
     txtF(event) {
-      // console.log(event);
         this.setState({
             txt : event.target.value
         })
@@ -38,7 +38,6 @@ export default class Search extends Component {
         .then((resp,req)=>{
             this.setState({
             artist: resp.data.artists
-            // artist: []
             })
 
 
@@ -91,7 +90,6 @@ export default class Search extends Component {
 
       })
       .catch(console.error)
-      console.log(this.state.track)
       document.getElementById("myNav").style.display = "block";
     }
     closeNav() {
@@ -101,13 +99,24 @@ export default class Search extends Component {
     generateArtistHead = (album,isDetail=true) => {
       return (
         
-        <ArtistdDetailHead artistThumb={album.strArtistThumb} idArtist={isDetail?"":album.idArtist} artist={album.strArtist} onClick={isDetail?()=>{}:(e)=>this.upperBody(e)} text={isDetail?"Detail":"View Album"}/>
+        <ArtistdDetailHead 
+        artistThumb={album.strArtistThumb} 
+        idArtist={isDetail?"":album.idArtist} 
+        artist={album.strArtist} 
+        onClick={isDetail?()=>{}:(e)=>this.upperBody(e)} 
+        text={isDetail?"Detail":"View Album"}
+        />
       );
     }
 
     generateArtistAlbumBody = (album) => {
       return (
-        <ArtistAlbumBody albumThumb={album.strAlbumThumb} album={album.strAlbum} onClick={(e)=>this.openNav(e)} idAlbum={album.idAlbum}/>
+        <ArtistAlbumBody 
+        albumThumb={album.strAlbumThumb} 
+        album={album.strAlbum} 
+        onClick={(e)=>this.openNav(e)} 
+        idAlbum={album.idAlbum}
+        />
       );
     }
 
@@ -119,41 +128,25 @@ export default class Search extends Component {
             <input placeholder="Search" className = 'searchField' type="text" value={this.state.txt} onChange={(e) => this.txtF(e)} align="middle"/>
             <button className="btn" onClick={this.clicked}>Search</button>
             <button className="btn1" onClick={this.clear}>Clear</button>
-            <SearchResultHead imageUrl={[this.state.artist?this.state.artist[0] !== undefined ? this.state.artist[0].strArtistThumb:"":""
+            <SearchResultHead 
+            imageUrl={[this.state.artist?this.state.artist[0] !== undefined ? this.state.artist[0].strArtistThumb:"":""
             ,this.state.artist?this.state.artist[1] !== undefined ? this.state.artist[1].strArtistThumb:"":""
-            ]}/>
+            ]}
+            />
             </div>
             <div id="upperBody">
               { this.state.artist?this.state.artist[0] !== undefined ? this.state.artist.map((album)=>this.generateArtistHead(album)) : "" : "" }
             {this.state.album.album != undefined ? this.state.album.album.map((album)=>this.generateArtistAlbumBody(album))
               : "" }
             </div>
+
             <div id="searched">
             { this.state.artist?this.state.artist[0] !== undefined ? this.state.artist.map((ArtistData)=>this.generateArtistHead(ArtistData,false)) : "":"" }
             </div>
-            <div id="myNav" className="overlay">
-            <a href="javascript:void(0)" className="closebtn" onClick={this.closeNav}>&times;</a>
-            <div className="overlay-content">
-              <span className = 'dtable'>
-                  <table className='innerTable'>
-                { this.state.track.track!== undefined ? this.state.track.track.map((dv)=>
-
-                  <tr>
-                    <th>{dv.intTrackNumber}</th>
-                    <td>{dv.strTrack}</td>
-                    <td>{parseInt(+(dv.intDuration)/60000)}:{(dv.intDuration)%60}</td>
-                  </tr>
-
-
-
-                ):""}
-
-          </table>
-        </span>
-
-            </div>
-</div>
-
+            <SongList
+              onClick={this.closeNav}
+              tracks = {this.state.track.track}
+              />
           </div>
         );
     }

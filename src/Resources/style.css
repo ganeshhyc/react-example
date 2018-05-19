@@ -51,7 +51,7 @@
   color: #3f3f3f;
   margin-top: 20px;
   margin-left:30px;
-  width: 50%;
+  width: 45%;
   height: 10px;
   border: 2px solid #e0dddd;
 
@@ -118,8 +118,26 @@
 .btn1:hover {
     background-color: black;
 }
+ a { color: #3e3e3e; }
+.popup {
+	zoom:1.0;
+	position:relative;
+	text-decoration:none;
+}
+.popup span {
+	position:fixed;
+	left:-999em;
+	z-index:990;
 
-
+}
+.popup:hover {visibility:visible;}
+.popup:hover span {left:auto;padding-top:75px;padding-left:50px;}
+* html .popup span {position:absolute;}
+.vScroll{
+  width:98%;
+  overflow:hidden;
+  overflow-x: scroll;
+}
 .ArtistsName{
   margin-left: 25px;
   margin-top: 25px;

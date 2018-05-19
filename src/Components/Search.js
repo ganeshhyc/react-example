@@ -47,9 +47,10 @@ export default class Search extends Component {
                                                                 )
                                                         })
     }
-    clear(event){
+    clear(){
       this.setState({
-          txt : event.target.value
+          txt : '',
+          artist : []
       })
 
       document.getElementById("searched").innerHTML = ''

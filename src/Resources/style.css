@@ -28,7 +28,7 @@
   color: #3f3f3f;
 }
 #header .login{
-  padding-left:  550px;
+  padding-left:  500px;
   font-size: 20px;
   color: #3f3f3f;
 }
@@ -51,7 +51,7 @@
   color: #3f3f3f;
   margin-top: 20px;
   margin-left:30px;
-  width: 60%;
+  width: 50%;
   height: 10px;
   border: 2px solid #e0dddd;
 
@@ -79,7 +79,13 @@
 }
 .searchImg{
   border-radius: 50%;
+  margin-right:100px;
+  margin-top: 10px;
+}
+.footerImg{
+  border-radius: 50%;
   margin-left:50px;
+  height:50px;
 }
 .btn {
     position: absolute;
@@ -96,27 +102,24 @@
 }
 .btn:hover {
     background-color: black;
+}.btn1 {
+    position: absolute;
+    background-color: #555;
+    margin-top: 25px;
+    margin-left: 120px;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+.btn1:hover {
+    background-color: black;
 }
 
-.popup {
-	zoom:1.0;
-	position:relative;
-	text-decoration:none;
-}
-.popup span {
-	position:fixed;
-	left:-999em;
-	z-index:990;
 
-}
-.popup:hover {visibility:visible;}
-.popup:hover span {left:auto;padding-top:75px;padding-left:50px;}
-* html .popup span {position:absolute;}
-.vScroll{
-  width:98%;
-  overflow:hidden;
-  overflow-x: scroll;
-}
 .ArtistsName{
   margin-left: 25px;
   margin-top: 25px;
@@ -124,3 +127,64 @@
 
   color: #3f3f3f;
 }
+.footerLine{
+  font-size: 13px;
+  color:#837e7e;
+}
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+/* optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #fffff;
+}
+.dtable table {
+    color: #333;
+    font-family: Helvetica, Arial, sans-serif;
+    width: 20%;
+    margin: auto;
+
+    border-collapse:
+    collapse; border-spacing: 0;
+}
+.dtable .innerTable {
+    color: #333;
+    font-family: Helvetica, Arial, sans-serif;
+    width: 300px;
+    margin: auto;
+
+    border-collapse:
+    collapse; border-spacing: 0;
+}
+.dtable td, th {
+    border: 1px solid transparent;
+    height: 30px;
+    transition: all 0.3s;
+}
+
+.dtable th {
+    background: #F1F1F1;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.dtable td {
+    background: #F1F1F1;
+    text-align: center;
+
+    font-size: 15px;
+}
+
+/* Cells in even rows (2,4,6...) are one color */
+.dtable tr:nth-child(even) td { background: #F1F1F1; }
+
+/* Cells in odd rows (1,3,5...) are another (excludes header cells)  */
+.dtable tr:nth-child(odd) td { background: #F1F1F1; }
+
+.dtable tr td:hover { background: #666; color: #FFF; }
+/* Hover cell effect! */

@@ -31,7 +31,9 @@ export default class ArtistSection extends Component {
                 <td>
                     <Artist imageUrl="http://wilesmag.com/wp-content/uploads/2014/07/Ariana-Grande.jpg"/>
                 </td>
-                </tr></tbody>
+                </tr>
+
+                </tbody>
             </table>
             </div>
         </div>

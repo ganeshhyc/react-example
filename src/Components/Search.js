@@ -8,7 +8,10 @@ export default class Search extends Component {
         this.state = {
             txt:'',
             artist: []
-        }
+          }
+          this.txtF=this.txtF.bind(this);
+          this.clicked=this.clicked.bind(this);
+          this.clear=this.clear.bind(this);
     }
     componentDidMount(){
 
@@ -34,27 +37,46 @@ export default class Search extends Component {
         .catch(console.error)
         console.log(this.state.artist);
     }
-    clicked(event){
+    clicked(){
+        document.getElementById("searched").innerHTML =
+                                                      this.state.artist.map((ArtistData)=>
+                                                        {return (
+                                                                  "<span class = 'dtable'><table><tr><th><img src='"+ArtistData.strArtistThumb+
+                                                                  "' height='100px'/></th><th><table class='innerTable'><tr><th>"+ArtistData.strArtist+
+                                                                  "</th</tr><tr><td><a href='#'>View Album</a></td></tr></table></th></tr></table></span>"
+                                                                )
+                                                        })
+    }
+    clear(event){
+      this.setState({
+          txt : event.target.value
+      })
 
+      document.getElementById("searched").innerHTML = ''
     }
 
     render() {
         return (
-        <div id="search">
-            <input placeholder="Search" className = 'searchField' type="text" value={this.state.txt} onChange={(e) => this.txtF(e)} align="middle"/>
-            <button class="btn" onClick={this.clicked}>Search</button>
-            <table border="0" align="right"><tbody><tr>
-                <td>
-                  <a class="popup" href="#">
-                    <img class="searchImg" height="75" src={this.state.artist?this.state.artist[0] !== undefined ? this.state.artist[0].strArtistThumb:"":""} align="middle"/><span>{this.state.artist?this.state.artist[0] !== undefined ? this.state.artist[0].strArtist:"":""}</span></a></td>
-                <td>
-                  <a class="popup" href="#">
-                    <img class="searchImg" height="75" src={this.state.artist?this.state.artist[1] !== undefined ? this.state.artist[1].strArtistThumb:"":""} align="middle"/><span>{this.state.artist?this.state.artist[1] !== undefined ? this.state.artist[1].strArtist:"":""}</span></a></td>
-                <td>
-                  <a class="popup" href="#">
-                    <img class="searchImg" height="75" src={this.state.artist?this.state.artist[2] !== undefined ? this.state.artist[2].strArtistThumb:"":""} align="middle"/><span>{this.state.artist?this.state.artist[2] !== undefined ? this.state.artist[2].strArtist:"":""}</span></a></td>
-            </tr></tbody></table>
-        </div>
+          <div>
+            <div id="search">
+                <input placeholder="Search" className = 'searchField' type="text" value={this.state.txt} onChange={(e) => this.txtF(e)} align="middle"/>
+                <button class="btn" onClick={this.clicked}>Search</button>
+                <button class="btn1" onClick={this.clear}>Clear</button>
+                <table border="0" align="right"><tbody><tr>
+                    <td>
+                      <a  href="#">
+                        <img class="searchImg" height="75" src={this.state.artist?this.state.artist[0] !== undefined ? this.state.artist[0].strArtistThumb:"":""} align="middle"/></a></td>
+                    <td>
+                      <a  href="#">
+                        <img class="searchImg" height="75" src={this.state.artist?this.state.artist[1] !== undefined ? this.state.artist[1].strArtistThumb:"":""} align="middle"/></a></td>
+                    <td>
+                      <a  href="#">
+                        <img class="searchImg" height="75" src={this.state.artist?this.state.artist[2] !== undefined ? this.state.artist[2].strArtistThumb:"":""} align="middle"/></a></td>
+                </tr></tbody></table>
+            </div>
+
+            <div id="searched"></div>
+          </div>
         );
     }
 }

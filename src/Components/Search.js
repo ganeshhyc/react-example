@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import BodyContent from './BodyContent';
 import axios from 'axios';
 
-var id=''
+var id='';var albumId=''
 export default class Search extends Component {
     constructor(props){
         super(props)
@@ -10,7 +10,9 @@ export default class Search extends Component {
             txt :'' ,
             artist : [] ,
             album : [],
-            id : ''
+            id : '',
+            albumId:'',
+            track : []
           }
           this.txtF=this.txtF.bind(this);
           this.clicked=this.clicked.bind(this);
@@ -19,8 +21,7 @@ export default class Search extends Component {
           this.openNav=this.openNav.bind(this);
           this.closeNav=this.closeNav.bind(this);
     }
-    componentDidMount(){
-
+    componentWillMount(){
     }
     componentWillUnmount(){
 
@@ -46,7 +47,9 @@ export default class Search extends Component {
           txt : '',
           artist : [],
           id : '',
-          album : []
+          album : [],
+          albumId : '',
+          track : []
       })
 
       document.getElementById("searched").style.display="none"
@@ -72,8 +75,21 @@ export default class Search extends Component {
       document.getElementById("upperBody").style.display="inline"
 
     }
-    openNav() {
-    document.getElementById("myNav").style.display = "block";
+    openNav(event) {
+      this.setState({
+        albumId : event.target.value
+      })
+      albumId = event.target.value
+      axios.get("http://www.theaudiodb.com/api/v1/json/1/track.php?m="+albumId)
+      .then((resp,req)=>{
+          this.setState({
+          track: resp.data
+          })
+
+      })
+      .catch(console.error)
+      console.log(this.state.track)
+      document.getElementById("myNav").style.display = "block";
     }
     closeNav() {
     document.getElementById("myNav").style.display = "none";
@@ -134,7 +150,7 @@ export default class Search extends Component {
                       </tr>
                       <tr>
                         <td>
-                          <button value={album.idAlbum} className="link" onClick={this.openNav}>View Playlist</button>
+                          <button value={album.idAlbum} className="link" onClick={(e)=>this.openNav(e)}>View Playlist</button>
                         </td>
                       </tr>
                     </table>
@@ -168,9 +184,9 @@ export default class Search extends Component {
                   </table>
                 </span>) : "":"" }
             </div>
-            <div id="myNav" class="overlay">
-            <a href="javascript:void(0)" class="closebtn" onClick={this.closeNav}>&times;</a>
-            <div class="overlay-content">
+            <div id="myNav" className="overlay">
+            <a href="javascript:void(0)" className="closebtn" onClick={this.closeNav}>&times;</a>
+            <div className="overlay-content">
               <a href="#">A</a>
               <a href="#">B</a>
               <a href="#">C</a>

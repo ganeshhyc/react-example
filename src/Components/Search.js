@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import BodyContent from './BodyContent';
 import SearchResultHead from './SearchResultHead';
 import ArtistdDetailHead from './ArtistDetailHead';
+import ArtistAlbumBody from './ArtistAlbumBody';
 import axios from 'axios';
 
 var id='';var albumId=''
@@ -104,6 +105,13 @@ export default class Search extends Component {
       );
     }
 
+    generateArtistAlbumBody = (album) => {
+      return (
+        <ArtistAlbumBody albumThumb={album.strAlbumThumb} album={album.strAlbum} onClick={(e)=>this.openNav(e)} idAlbum={album.idAlbum}/>
+      );
+    }
+
+
     render() {
         return (
           <div>
@@ -117,28 +125,7 @@ export default class Search extends Component {
             </div>
             <div id="upperBody">
               { this.state.artist?this.state.artist[0] !== undefined ? this.state.artist.map((album)=>this.generateArtistHead(album)) : "" : "" }
-            {this.state.album.album != undefined ? this.state.album.album.map((album)=>
-              <span className="stable">
-              <table>
-                <tr>
-                  <th>
-                    <img className="roundT" src={album.strAlbumThumb} height='50px'/>
-                  </th>
-                  <th>
-                    <table className='innerTable'>
-                      <tr>
-                        <th>{album.strAlbum}</th>
-                      </tr>
-                      <tr>
-                        <td>
-                          <button value={album.idAlbum} className="link" onClick={(e)=>this.openNav(e)}>View Playlist</button>
-                        </td>
-                      </tr>
-                    </table>
-                  </th>
-                </tr>
-              </table></span>
-            )
+            {this.state.album.album != undefined ? this.state.album.album.map((album)=>this.generateArtistAlbumBody(album))
               : "" }
             </div>
             <div id="searched">

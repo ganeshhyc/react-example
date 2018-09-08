@@ -3,12 +3,12 @@
   width:100%;
   height:2%;
 }
-#header{
+/* #header{
   background-color: #f7f7f7;
   width:100%;
   height:10%;
   border-bottom: 1px solid #e0dddd;
-}
+} */
 #header .icon{
   padding-left: 10px;
 }
@@ -33,7 +33,8 @@
   color: #3f3f3f;
 }
 #header .signup{
-  padding-left:  80px;
+  margin-left:80%;
+  margin-top:-50px;
   font-size: 20px;
   color: #3f3f3f;
 }
